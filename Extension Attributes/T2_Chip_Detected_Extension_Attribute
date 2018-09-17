@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+# Using system_profiler to check for SPi bridge data type reporting as
+# "T2"
+#
+T2_DETECT=$( system_profiler SPiBridgeDataType | grep "T2" | awk '{print $4}')
+#
+# If T2 chip is detected then result is "Yes"
+# Otherwise result is "No".
+#
+if [[ "${T2_DETECT}" == "T2" ]]; then
+      result=Yes
+   else
+      result=No
+fi
+echo "<result>$result</result>"
+exit 0
